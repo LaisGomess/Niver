@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bem-vindo, Mumu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #f9fbe7, #fffde7);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      border: 2px solid #fdd835;
+      z-index: 2;
+    }
+    h1 {
+      font-size: 3.2em;
+      color: #ffb300;
+      margin-bottom: 20px;
+    }
+    .instrucao {
+      font-size: 1.2em;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .pato-nadando {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 90px;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.2s;
+    }
+    .pato-nadando:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Bem-vindo, Mumu</h1>
+    <p class="instrucao">Clique no patinho para ir para a próxima página 🦆</p>
+  </div>
+
+  <img src="patinho-nadando.gif" alt="Patinho nadando" class="pato-nadando" id="patinho" />
+
+  <!-- 🔊 Som do quack -->
+  <audio id="quack-som" src="quack.mp3"></audio>
+
+  <script>
+    const patinho = document.getElementById('patinho');
+    const som = document.getElementById('quack-som');
+
+    patinho.addEventListener('click', () => {
+      som.currentTime = 0;  // reinicia se já estiver tocando
+      som.play();
+      setTimeout(() => {
+        window.location.href = 'pagina2.html'; // ou pagina_2.html se for o nome real
+      }, 800); // espera o som tocar
+    });
+  </script>
+
+</body>
+</html>

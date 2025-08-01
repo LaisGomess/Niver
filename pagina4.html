@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Varal de Memórias</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #fceabb, #f8b500);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #5c3c00;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 2.5em;
+      color: #5c3c00;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: 20px auto 40px auto;
+      text-align: center;
+      font-size: 1.1em;
+      line-height: 1.6;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .varal-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px 30px;
+      padding: 60px 20px 120px 20px; /* extra espaço para botões */
+      position: relative;
+    }
+
+    .fio {
+      width: 100%;
+      height: 2px;
+      background: #a97400;
+      position: absolute;
+      top: 40px;
+      left: 0;
+    }
+
+    .foto-polaroid {
+      width: 180px;
+      background-color: #fffaf0;
+      border: 2px solid #dcb35c;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      padding: 10px 10px 15px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease;
+    }
+
+    .foto-polaroid:nth-child(even) {
+      transform: rotate(2.5deg);
+    }
+
+    .foto-polaroid:hover {
+      transform: scale(1.05) rotate(0deg);
+      z-index: 2;
+    }
+
+    .foto-polaroid::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      background: #ffd966;
+      border: 2px solid #a97400;
+      border-radius: 50%;
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .foto-polaroid img {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .bilhete {
+      margin-top: 10px;
+      font-size: 0.95em;
+      text-align: center;
+      color: #5c3c00;
+    }
+
+    .navigation-buttons {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 999;
+    }
+
+    .nav-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #5c3c00;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-button img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 4px;
+    }
+
+    .nav-button:hover {
+      transform: scale(1.1);
+    }
+
+    .sparkle {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, #fff2cc, #f7c948);
+      box-shadow: 0 0 10px #ffe599, 0 0 20px #ffd966;
+      animation: fadeSparkle 0.8s ease-out forwards;
+      z-index: 9999;
+    }
+
+    @keyframes fadeSparkle {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(2); }
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .foto-polaroid {
+        width: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1> ✨ Feliz aniversário, Lilo! ✨</h1>
+
+  <div class="intro">
+    <br><h2> Queria dizer que cada uma dessas fotos carrega um pedacinho do quanto você é importante para todos.</br></h2>  
+
+   Sei que essa data não é exatamente a sua favorita, mas ela é especial para todos que te querem bem.
+    Nós erramos, tropeçamos mas vamos aprendendo a levantar e a perceber que a vida nem sempre é leve, mas as pessoas certas ajudam a curar nossos tombos.  
+    Desejo que, com o tempo, você veja esse dia como algo bonito.  
+    <br> Sua vida é um presente pra todos nós. 💛</br>
+  </div>
+
+  <div class="varal-container">
+    <div class="fio"></div>
+
+    <!-- 10 FOTOS NO VARAL -->
+    <div class="foto-polaroid"><img src="foto1.jpeg" alt="Foto 1"><div class="bilhete"> Sempre que ouvia "ain o Murilo é muito fechado eu lembro dessa foto e penso "Esse golden aqui?"</div></div>
+    <div class="foto-polaroid"><img src="foto2.jpeg" alt="Foto 2"><div class="bilhete"> Todos eles tem muito orgulho do filho e irmão que você é</div></div>
+    <div class="foto-polaroid"><img src="foto3.jpeg" alt="Foto 3"><div class="bilhete"> Esses aqui podem até não demonstrar tanto, mas gostam mt de ti</div></div>
+    <div class="foto-polaroid"><img src="foto4.jpeg" alt="Foto 4"><div class="bilhete"> Ensinando o Joaca a mostrar a lingua, que bonito hein? kkkk</div></div>
+    <div class="foto-polaroid"><img src="foto5.jpeg" alt="Foto 5"><div class="bilhete"> Sei o quanto você sentiu falta deles dois, e te ver sorrindo e brincando com eles só confirma o quanto você é amado</div></div>
+    <div class="foto-polaroid"><img src="foto6.jpeg" alt="Foto 6"><div class="bilhete"> Você abriu sua casa pra uma pessoa que queria ir no Tusca, isso que é amigo!</div></div>
+    <div class="foto-polaroid"><img src="foto7.jpeg" alt="Foto 7"><div class="bilhete"> Claro que NÃO pode faltar uma foto de você indo de dormes, essa espécie de mini trator é rara KKKKKK brincadeira, brincadeira </div></div>
+    <div class="foto-polaroid"><img src="foto8.jpeg" alt="Foto 8"><div class="bilhete"> Você só é frio e calculista por fora né? Pq por dentro, É UM GOLDEN. Why sou serius? </div></div>
+    <div class="foto-polaroid"><img src="foto9.jpeg" alt="Foto 9"><div class="bilhete"> Novamente, vemos o homem super sério com a linguinha pra fora e fazendo rostinho de peixe</div></div>
+    <div class="foto-polaroid"><img src="foto10.jpeg" alt="Foto 10"><div class="bilhete"> A MELHOR experiência gastronômica que você já teve e vai ter em toda a sua vida!</div></div>
+  </div>
+
+  <!-- MÚSICA -->
+  <audio autoplay loop>
+    <source src="power-over-me.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- NAVEGAÇÃO COM PATINHOS -->
+  <div class="navigation-buttons">
+    <a href="pagina3.html" class="nav-button">
+      <img src="patinho-nadando.gif" alt="Voltar">
+      <span>Voltar</span>
+    </a>
+    <a href="pagina5.html" class="nav-button">
+      <img src="patinho-nadando.gif" alt="Avançar">
+      <span>Avançar</span>
+    </a>
+  </div>
+
+  <!-- CURSOR MÁGICO -->
+  <script>
+    document.addEventListener("mousemove", (e) => {
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+      sparkle.style.left = e.clientX + "px";
+      sparkle.style.top = e.clientY + "px";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 800);
+    });
+  </script>
+
+</body>
+</html

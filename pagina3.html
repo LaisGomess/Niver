@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Surpresa!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+      color: #37474f; /* tom escuro mas suave */
+      user-select: none;
+    }
+    .container {
+      max-width: 600px;
+      padding: 40px 30px;
+      background: #ffffffdd; /* branco semi-transparente */
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      border: 1px solid #b0bec5; /* borda cinza clara */
+      transition: transform 0.3s ease;
+    }
+    .container:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    }
+    h2 {
+      font-size: 2.2em;
+      margin-bottom: 30px;
+      font-weight: 700;
+      color: #00796b; /* verde petróleo suave */
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .caixa-surpresa {
+      cursor: pointer;
+      width: 160px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      margin: 0 auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 121, 107, 0.3);
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.1));
+    }
+    .caixa-surpresa:hover {
+      transform: scale(1.15) rotate(5deg);
+      box-shadow: 0 14px 28px rgba(0, 121, 107, 0.5);
+      filter: drop-shadow(0 6px 6px rgba(0,0,0,0.15));
+    }
+    /* Botão voltar */
+    .botao-voltar {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      text-align: center;
+      cursor: pointer;
+      z-index: 10;
+      user-select: none;
+      background: #00796b;
+      padding: 8px 12px;
+      border-radius: 14px;
+      box-shadow: 0 6px 14px rgba(0, 121, 107, 0.4);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      color: white;
+      width: 100px;
+    }
+    .botao-voltar:hover {
+      background: #004d40;
+      transform: scale(1.05);
+      box-shadow: 0 10px 22px rgba(0, 77, 64, 0.6);
+    }
+    .botao-voltar img {
+      width: 48px;
+      margin: 0 auto;
+      display: block;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25));
+      margin-bottom: 6px;
+    }
+    .botao-voltar p {
+      margin: 0;
+      font-size: 0.9em;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" role="main">
+    <h2>O que será que tem aqui?</h2>
+    
+    <img src="caixa-surpresa.gif" alt="Caixa de surpresas" class="caixa-surpresa" id="caixa" />
+  </div>
+
+  <!-- Som de surpresa -->
+  <audio id="som-surpresa" src="surpresa.mp3" autoplay></audio>
+
+  <!-- Botão voltar -->
+  <div class="botao-voltar" id="botaoVoltar" role="button" tabindex="0" aria-label="Clique para voltar à página anterior">
+    <img src="patinho-nadando.gif" alt="Voltar" />
+    <p>Clique para voltar</p>
+  </div>
+
+  <script>
+    const caixa = document.getElementById('caixa');
+    caixa.addEventListener('click', () => {
+      window.location.href = 'pagina4.html';
+    });
+
+    const botaoVoltar = document.getElementById('botaoVoltar');
+    botaoVoltar.addEventListener('click', () => {
+      window.location.href = 'pagina2.html';
+    });
+    // Para acessibilidade: ativar botão voltar com Enter
+    botaoVoltar.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        window.location.href = 'pagina2.html';
+      }
+    });
+  </script>
+
+</body>
+</html>

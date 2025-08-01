@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Cumpleaños</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #fff3c8, #ffd27f);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #5c3c00;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 10px 10px 10px;
+      font-size: 2.4em;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .moldura {
+      border: 5px solid rgba(255, 223, 115, 0.7);
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 0 0 20px rgba(255, 234, 150, 0.7);
+      animation: brilho 3s infinite ease-in-out;
+      position: relative;
+      background-color: white;
+    }
+
+    .moldura::before, .moldura::after {
+      content: "✨✨✨";
+      position: absolute;
+      font-size: 20px;
+      animation: piscar 2s infinite alternate;
+      pointer-events: none;
+    }
+
+    .moldura::before {
+      top: -10px;
+      left: 20px;
+    }
+
+    .moldura::after {
+      bottom: -10px;
+      right: 20px;
+    }
+
+    @keyframes brilho {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 234, 150, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 35px rgba(255, 255, 200, 1);
+      }
+    }
+
+    @keyframes piscar {
+      0% { opacity: 0.3; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .moldura img {
+      width: 80%;
+      border-radius: 10px;
+    }
+
+    .texto {
+      margin-top: 25px;
+      font-size: 1.15em;
+      line-height: 1.7;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .botoes {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .botoes img {
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .botoes img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Estrelinhas caindo */
+    .estrelinha {
+      position: fixed;
+      top: -20px;
+      font-size: 18px;
+      color: #fff4b3;
+      pointer-events: none;
+      animation: cairEstrelinha linear forwards;
+      z-index: 9999;
+    }
+
+    @keyframes cairEstrelinha {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .moldura {
+        padding: 10px;
+      }
+
+      .texto {
+        font-size: 1em;
+      }
+
+      .botoes img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Feliz cumpleaños 🧡</h1>
+
+  <div class="container">
+    <div class="moldura">
+      <img src="foto-linda.jpeg" alt="Foto especial com sorrisão">
+    </div>
+
+    <div class="texto">
+     Eu queria muito poder estar aí com você hoje — rindo, trocando beijinhos e gravando seus sorrisos com o olhar.
+Como isso não foi possível, espero que esse cantinho consiga transmitir um pedacinho do carinho que sinto por ti.
+
+Assim como na foto (que, convenhamos, é a melhor até agora), desejo que seu dia seja leve, bonito e iluminado como o seu sorrisão.  
+      <br><br>
+      <br><br>
+      <strong>Feliz cumpleaños</strong>, tu vida es un regalo que hace el mundo más bonito. 💛
+    </div>
+
+    <div class="botoes">
+      <a href="pagina5.html"><img src="patinho-nadando.gif" alt="Voltar"></a>
+      <a href="pagina7.html"><img src="patinho-nadando.gif" alt="Avançar"></a>
+    </div>
+  </div>
+
+  <!-- Música -->
+  <audio autoplay loop>
+    <source src="amarelo.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Estrelinhas caindo -->
+  <script>
+    function criarEstrelinha() {
+      const estrela = document.createElement("div");
+      estrela.classList.add("estrelinha");
+      estrela.innerText = "✨";
+      estrela.style.left = Math.random() * 100 + "vw";
+      estrela.style.animationDuration = (Math.random() * 2 + 3) + "s";
+      document.body.appendChild(estrela);
+
+      setTimeout(() => {
+        estrela.remove();
+      }, 5000);
+    }
+
+    setInterval(criarEstrelinha, 300);
+  </script>
+
+</body>
+</html>

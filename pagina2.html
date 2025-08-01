@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lembrança Especial</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fffde7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 700px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      border: 2px solid #fdd835;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 1.8em;
+      color: #f9a825;
+      margin-bottom: 15px;
+    }
+
+    .brincadeira {
+      font-size: 1.1em;
+      color: #888;
+      margin-bottom: 25px;
+    }
+
+    video {
+      width: 100%;
+      max-width: 560px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      margin-bottom: 30px;
+    }
+
+    .patinho-link {
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .patinho-link:hover {
+      transform: scale(1.1);
+    }
+
+    .patinho {
+      width: 90px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Pra começarmos muito bem o seu aniversário, aqui está uma lembrança especial</h2>
+    <p class="brincadeira">Por favor não fique bravo KKK</p>
+
+    <!-- Vídeo local -->
+    <video controls>
+      <source src="video.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeos HTML5.
+    </video>
+
+    <!-- Patinho para próxima página -->
+    <div class="patinho-link" id="patinho-link">
+      <img src="patinho-nadando.gif" alt="Clique no patinho" class="patinho">
+      <p style="margin-top: 8px; font-size: 0.95em; color: #444;">Clique no patinho para continuar</p>
+    </div>
+  </div>
+
+  <div class="navigation-buttons">
+    <a href="idex.html" class="nav-button">
+      <img src="patinho-nadando.gif" alt="Voltar" />
+      <span>Voltar</span>
+    </a>
+
+  <!-- 🔊 Som de quack -->
+  <audio id="quack-som" src="quack.mp3"></audio>
+
+  <script>
+    const patinhoLink = document.getElementById('patinho-link');
+    const som = document.getElementById('quack-som');
+
+    patinhoLink.addEventListener('click', () => {
+      som.currentTime = 0;
+      som.play();
+      setTimeout(() => {
+        window.location.href = "pagina3.html";
+      }, 800); // espera o som tocar antes de trocar de página
+    });
+  </script>
+
+</body>
+</html>

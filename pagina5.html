@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Escolha com Sabedoria</title>
+  <style>
+    .navigation-buttons {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 999;
+    }
+
+    .nav-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #e9d8fd;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-button img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 4px;
+    }
+
+    .nav-button:hover {
+      transform: scale(1.1);
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #2a104b, #3f1e6e);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 2.5em;
+      color: #e6ccff;
+      text-shadow: 0 0 8px #c084fc, 0 0 12px #a855f7, 0 0 16px #9333ea;
+      animation: brilhoSuave 3s infinite alternate;
+    }
+
+    @keyframes brilhoSuave {
+      0% {
+        text-shadow: 0 0 6px #c084fc, 0 0 10px #a855f7, 0 0 14px #9333ea;
+      }
+      100% {
+        text-shadow: 0 0 12px #d8b4fe, 0 0 16px #a855f7, 0 0 20px #7e22ce;
+      }
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1100px;
+      margin: 40px auto;
+      gap: 30px;
+    }
+
+    .card {
+      width: 220px;
+      height: 320px;
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      backface-visibility: hidden;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+    }
+
+    .card-front {
+      background: #fff;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #000;
+    }
+
+    .card-back {
+      background: #4e287d;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .card-back img,
+    .card-back video {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background-color: #000;
+      border-radius: 10px;
+    }
+
+    .card-back p {
+      margin-top: 10px;
+      font-size: 1em;
+      color: #f3e5f5;
+      text-align: center;
+    }
+
+    /* Cursor mágico */
+    .sparkle {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, #d4b5ff, #8e5ddb);
+      box-shadow: 0 0 10px #b388ff, 0 0 20px #c49fff;
+      animation: fadeSparkle 0.8s ease-out forwards;
+      z-index: 9999;
+    }
+
+    @keyframes fadeSparkle {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(2.2);
+      }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Escolha com sabedoria</h1>
+
+  <div class="cards-container">
+    <div class="card" onclick="virarCarta(this)">
+      <div class="card-inner">
+        <div class="card-front"><img src="coruja.jpg" alt="Coruja"></div>
+        <div class="card-back"><img src="chave1.jpeg" alt="Foto 1"><p> Eu nunca achei que fosse gostar tanto de alguém que conheci num dos maiores acasos da minha vida! </p></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="virarCarta(this)">
+      <div class="card-inner">
+        <div class="card-front"><img src="corvo.jpg" alt="Corvo"></div>
+        <div class="card-back"><img src="chave2.jpeg" alt="Foto 2"><p> E todas as vezes que penso nesse acaso, lembro do verso que o micro tdh fala em cafune "Te encontré cuando no hallaba qué buscar" 😊</p></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="virarCarta(this)">
+      <div class="card-inner">
+        <div class="card-front"><img src="pato.jpg" alt="Pato"></div>
+        <div class="card-back"><img src="chave3.jpeg" alt="Foto 3"><p> Você apareceu implicando comigo, me chamando de problemática e claro que era pra esconder que tava caidinho por mim rs</p></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="virarCarta(this)">
+      <div class="card-inner">
+        <div class="card-front"><img src="vaca.jpg" alt="Vaca"></div>
+        <div class="card-back"><img src="chave4.jpeg" alt="Foto 4"><p> Mas, é aquela velha frase né? "Os olhos não mentem" 🌟</p></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="virarCarta(this)">
+      <div class="card-inner">
+        <div class="card-front"><img src="pinguim.jpg" alt="Pinguim"></div>
+        <div class="card-back"><img src="chave5.jpeg" alt="Foto 5"><p> E tenho certeza que nossos olhos nunca mentiram. 🐧</p></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="virarCarta(this)">
+      <div class="card-inner">
+        <div class="card-front"><img src="coruja.jpg" alt="Coruja"></div>
+        <div class="card-back"><img src="chave6.jpeg" alt="Foto 6"><p> Eu nunca dei risadas tão sínceras com alguém, seu senso de humor consegue ser quase pior que o meu. E olha que você adora uma fofoca hein? kkkkkk </p></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="virarCarta(this)">
+      <div class="card-inner">
+        <div class="card-front"><img src="corvo.jpg" alt="Corvo"></div>
+        <div class="card-back"><img src="chave7.jpeg" alt="Foto 7"><p> Não falando apenas da parte amorosa, mas sua companhia é lareira em dias frios, pão de queijo no café da tarde, um colinho gostoso pós trabalho💖</p></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="virarCarta(this)">
+      <div class="card-inner">
+        <div class="card-front"><img src="pato.jpg" alt="Pato"></div>
+        <div class="card-back"><img src="chave8.jpeg" alt="Foto 8"><p> Às vezes a vida surpreende e a gente tem a sorte de encontrar alguém com quem dá vontade de brincar, conversar, beijar, dividir medos, sonhos, desejos, falar sobre a vida, a família e tudo que a gente acredita 💡</p></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="virarCarta(this)">
+      <div class="card-inner">
+        <div class="card-front"><img src="vaca.jpg" alt="Vaca"></div>
+        <div class="card-back"><img src="chave9.jpeg" alt="Foto 9"><p> A forma como tudo acontece sem a gente combinar, como rimos das mesmas coisas, pedimos o mesmo prato, histórias que se cruzam de um jeito um tanto quanto peculiar... 💜</p></div>
+      </div>
+    </div>
+
+    <div class="card" onclick="virarCarta(this)">
+      <div class="card-inner">
+        <div class="card-front"><img src="pinguim.jpg" alt="Pinguim"></div>
+        <div class="card-back">
+          <video src="chave10.mp4" controls></video>
+          <p>Te guardo com carinho no meu coração 💌</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Música -->
+  <audio autoplay loop>
+    <source src="love.mp3" type="audio/mp3" />
+  </audio>
+
+  <!-- Botões "fofo" e "sapinho" -->
+  <div class="navigation-buttons">
+    <a href="pagina4.html" class="nav-button">
+      <img src="fofo.gif" alt="Voltar" />
+      <span>Voltar</span>
+    </a>
+    <a href="pagina6.html" class="nav-button">
+      <img src="sapinho.gif" alt="Avançar" />
+      <span>Avançar</span>
+    </a>
+  </div>
+
+  <!-- Efeitos mágicos -->
+  <script>
+    function virarCarta(card) {
+      card.classList.toggle("flipped");
+    }
+
+    document.addEventListener("mousemove", (e) => {
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+      sparkle.style.left = e.clientX + "px";
+      sparkle.style.top = e.clientY + "px";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 800);
+    });
+  </script>
+
+</body>
+</html>
